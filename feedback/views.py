@@ -10,7 +10,8 @@ def index(request):
         if form.is_valid():
             print(form.cleaned_data)
             return HttpResponseRedirect('/done')
-    form = FeedbackForm()
+    else:
+        form = FeedbackForm()
     return render(request, 'feedback/feedback.html', context={'form': form})
 
 
