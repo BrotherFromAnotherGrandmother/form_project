@@ -9,10 +9,10 @@ def index(request):
     if request.method == 'POST':
         name = request.POST['name']
         if len(name) == 0:
-            return render(request, 'feedback/feedback.html', context={'got_error': True})
+            return render(request, 'feedback/feedback.html', context={'form': form})
         print(name)
         return HttpResponseRedirect('/done')
-    return render(request, 'feedback/feedback.html', context={'got_error': False})
+    return render(request, 'feedback/feedback.html', context={'form': form})
 
 
 def done(request):
