@@ -5,13 +5,12 @@ from .forms import FeedbackForm
 
 # Create your views here.
 def index(request):
-    form = FeedbackForm()
     if request.method == 'POST':
-        name = request.POST['name']
-        if len(name) == 0:
-            return render(request, 'feedback/feedback.html', context={'form': form})
-        print(name)
-        return HttpResponseRedirect('/done')
+        form = FeedbackForm(request.POST)
+        if form.is_valid():
+            print(form.cleaned_data)
+            return HttpResponseRedirect('/done')
+    form = FeedbackForm()
     return render(request, 'feedback/feedback.html', context={'form': form})
 
 
