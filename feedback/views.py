@@ -14,7 +14,7 @@ def index(request):
                 name=form.cleaned_data['name'],
                 surname=form.cleaned_data['surname'],
                 feedback=form.cleaned_data['feedback'],
-                rating=form.cleaned_data['rating'],
+                rating=form.cleaned_data['rating']
             )
             feed.save()
             return HttpResponseRedirect('/done')
