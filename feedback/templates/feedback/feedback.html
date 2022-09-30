@@ -1,23 +1,36 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="{% static 'feedback/forms.css' %}">
 </head>
 <body>
     <h2>Оставьте отзыв</h2>
     <form method="post">
     {% csrf_token %}
+
     {% for field in form %}
-        <div class="fieldWrapper">
-            {{ field.errors }}
-            {{ field.label_tag }}<br>
-            {{ field }}
-            <br>
-            <br>
+        <div class="form-style">
+            {{field.label_tag}}
+            {{field.errors}}
+            {{field}}
         </div>
     {% endfor %}
+
     <button>Отправить</button>
+
+<!--    {% for field in form %}-->
+<!--        <div class="fieldWrapper">-->
+<!--            {{ field.errors }}-->
+<!--            {{ field.label_tag }}<br>-->
+<!--            {{ field }}-->
+<!--            <br>-->
+<!--            <br>-->
+<!--        </div>-->
+<!--    {% endfor %}-->
 </form>
 </body>
 </html>
