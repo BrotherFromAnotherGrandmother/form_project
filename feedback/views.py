@@ -4,6 +4,7 @@ from .forms import FeedbackForm
 from .models import Feedback
 
 from django.views import View
+from django.views.generic.base import TemplateView
 
 
 class FeedBackView(View):
@@ -35,6 +36,5 @@ class FeedBackUpdateView(View):
             return HttpResponseRedirect(f'/{id_feedback}')
         return render(request, 'feedback/feedback.html', context={'form': form})
 
-class DoneView(View):
-    def get(self, request):
-        return render(request, 'feedback/done.html')
+class DoneView(TemplateView):
+    template_name = 'feedback/done.html'
