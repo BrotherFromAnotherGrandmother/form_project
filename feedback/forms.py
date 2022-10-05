@@ -15,4 +15,12 @@ from .models import Feedback
 class FeedbackForm(forms.ModelForm):
     class Meta:
         model = Feedback
-        fields = ['name', 'rating']
+        # fields = ['name', 'rating', 'surname']
+        fields = '__all__'
+        # exclude = ['rating']
+        labels = {
+            'name' : 'Имя',
+            'surname' : 'Фамилия',
+            'feedback' : 'Отзыв',
+            'rating' : 'Рейтинг',
+        }
