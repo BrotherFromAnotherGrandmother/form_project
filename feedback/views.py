@@ -20,6 +20,21 @@ class FeedBackView(View):
         return render(request, 'feedback/feedback.html', context={'form': form})
 
 
+class UpdateFeedback(View):
+    def get(self, request, id_feedback):
+        feed = Feedback.objects.get(id=id_feedback)
+        form = FeedbackForm(instance=feed)
+        return render(request, 'feedback/feedback.html', context={'form': form})
+
+    def post(self, request, id_feedback):
+        feed = Feedback.objects.get(id=id_feedback)
+        form = FeedbackForm(request.POST, instance=feed)
+        if form.is_valid():
+            print(form.cleaned_data)
+            form.save()
+            return HttpResponseRedirect(f'/{id_feedback}')
+        return render(request, 'feedback/feedback.html', context={'form': form})
+
 def update_feedback(request, id_feedback):
     feed = Feedback.objects.get(id=id_feedback)
     if request.method == 'POST':
