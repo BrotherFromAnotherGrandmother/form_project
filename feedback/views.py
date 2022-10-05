@@ -36,5 +36,5 @@ class FeedBackUpdateView(View):
         return render(request, 'feedback/feedback.html', context={'form': form})
 
 class DoneView(View):
-    def get(self,request):
+    def get(self, request):
         return render(request, 'feedback/done.html')
