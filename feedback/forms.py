@@ -19,8 +19,22 @@ class FeedbackForm(forms.ModelForm):
         fields = '__all__'
         # exclude = ['rating']
         labels = {
-            'name' : 'Имя',
-            'surname' : 'Фамилия',
-            'feedback' : 'Отзыв',
-            'rating' : 'Рейтинг',
+            'name': 'Имя',
+            'surname': 'Фамилия',
+            'feedback': 'Отзыв',
+            'rating': 'Рейтинг',
+        }
+        error_messages = {
+            'name': {'max_length': 'ой как много символов',
+                     'min_length': 'ой как мало символов',
+                     'required': 'Не должно быть пустым'
+                     },
+            'surname': {'max_length': 'ой как много символов',
+                        'min_length': 'ой как мало символов',
+                        'required': 'Не должно быть пустым'
+                        },
+            'feedback': {'max_length': 'ой как много символов',
+                         'min_length': 'ой как мало символов',
+                         'required': 'Не должно быть пустым'
+                         }
         }
