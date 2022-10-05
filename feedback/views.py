@@ -3,18 +3,21 @@ from django.http import HttpResponseRedirect
 from .forms import FeedbackForm
 from .models import Feedback
 
+from django.views import View
 
-# Create your views here.
-def index(request):
-    if request.method == 'POST':
+
+class FeedBackView(View):
+    def get(self, request):
+        form = FeedbackForm()
+        return render(request, 'feedback/feedback.html', context={'form': form})
+
+    def post(self, request):
         form = FeedbackForm(request.POST)
         if form.is_valid():
             print(form.cleaned_data)
             form.save()
             return HttpResponseRedirect('/done')
-    else:
-        form = FeedbackForm()
-    return render(request, 'feedback/feedback.html', context={'form': form})
+        return render(request, 'feedback/feedback.html', context={'form': form})
 
 
 def update_feedback(request, id_feedback):
