@@ -17,5 +17,11 @@ def index(request):
     return render(request, 'feedback/feedback.html', context={'form': form})
 
 
+def update_feedback(request, id_feedback):
+    feed = Feedback.objects.get(id=id_feedback)
+    form = FeedbackForm(instance=feed)
+    return render(request, 'feedback/feedback.html', context={'form': form})
+
+
 def done(request):
     return render(request, 'feedback/done.html')
