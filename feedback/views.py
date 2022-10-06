@@ -36,6 +36,7 @@ class FeedBackUpdateView(View):
             return HttpResponseRedirect(f'/{id_feedback}')
         return render(request, 'feedback/feedback.html', context={'form': form})
 
+
 class DoneView(TemplateView):
     template_name = 'feedback/done.html'
 
@@ -56,7 +57,9 @@ class ListFeedBack(TemplateView):
 
 
 class DetailFeedBack(TemplateView):
-    def get(self, request, id_feedback):
-        feed = Feedback.objects.get(id=id_feedback)
-        form = FeedbackForm(instance=feed)
-        return render(request, 'feedback/detail_feedback.html', context={'form': form})
+    template_name = 'feedback/detail_feedback.html'
+
+    def get_context_data(self, id_feedback, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['current'] = Feedback.objects.get(id=kwargs['id_feedback'])
+        return context
