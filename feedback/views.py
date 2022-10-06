@@ -56,4 +56,7 @@ class ListFeedBack(TemplateView):
 
 
 class DetailFeedBack(TemplateView):
-    pass
+    def get(self, request, id_feedback):
+        feed = Feedback.objects.get(id=id_feedback)
+        form = FeedbackForm(instance=feed)
+        return render(request, 'feedback/detail_feedback.html', context={'form': form})
