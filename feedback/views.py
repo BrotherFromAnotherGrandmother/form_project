@@ -44,3 +44,11 @@ class DoneView(TemplateView):
         context['name'] = 'Ivanov I.I'
         context['date'] = '06.10.2022'
         return context
+
+
+class ListFeedBack(TemplateView):
+    template_name = 'feedback/list_feedback.html'
+
+    def get_context_data(self, **kwargs):
+        context = Feedback.objects.all()
+        return context
