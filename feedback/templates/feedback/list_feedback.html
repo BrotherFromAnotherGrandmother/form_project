@@ -3,7 +3,7 @@
 {% block title %} Список всех отзывов {% endblock %}
 
 {% block content %}
-    {% for feedback in all_feed %}
+    {% for feedback in feedbacks %}
         <li>{{ feedback.name }} {{ feedback.surname }}:  {{ feedback.rating }}</a></li>
     {% endfor %}
 {% endblock %}
