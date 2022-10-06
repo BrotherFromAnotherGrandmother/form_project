@@ -3,7 +3,7 @@
 {% block title %} Список всех отзывов {% endblock %}
 
 {% block content %}
-    {% for feedback in feedbacks %}
-        {% feedback %}
+    {% for feedback in all_feed %}
+        <li><a href="{{feedback.DetailFeedBack}}">{{ feedback.name }}</a></li>
     {% endfor %}
 {% endblock %}

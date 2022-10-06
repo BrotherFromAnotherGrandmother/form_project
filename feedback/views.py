@@ -50,5 +50,10 @@ class ListFeedBack(TemplateView):
     template_name = 'feedback/list_feedback.html'
 
     def get_context_data(self, **kwargs):
-        context = Feedback.objects.all()
+        context = super().get_context_data(**kwargs)
+        context['all_feed'] = Feedback.objects.all()
         return context
+
+
+class DetailFeedBack(TemplateView):
+    pass
