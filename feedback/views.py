@@ -38,3 +38,9 @@ class FeedBackUpdateView(View):
 
 class DoneView(TemplateView):
     template_name = 'feedback/done.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['name'] = 'Ivanov I.I'
+        context['date'] = '06.10.2022'
+        return context
