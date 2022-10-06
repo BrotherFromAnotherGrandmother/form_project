@@ -1,0 +1,9 @@
+{% extends 'feedback/base.html' %}
+
+{% block title %} Список всех отзывов {% endblock %}
+
+{% block content %}
+    {% for feedback in feedbacks %}
+        {% feedback %}
+    {% endfor %}
+{% endblock %}
